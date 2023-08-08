@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario y Tabla</title>
+</head>
+<body>
+    <h1>Formulario y Tabla</h1>
+
+    <form id="miFormulario">
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" name="numero" required><br>
+
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo" required>
+            <option value="DNI">DNI</option>
+            <option value="Pasaporte">Pasaporte</option>
+            <option value="Carnet">Carnet</option>
+        </select><br>
+
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required><br>
+
+        <label for="nombre">Apellido y Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="codigo">En Código:</label>
+        <input type="text" id="codigo" name="codigo" required><br>
+
+        <label for="letras">En Letras:</label>
+        <input type="text" id="letras" name="letras" required><br>
+
+        <label for="observaciones">Observaciones:</label>
+        <textarea id="observaciones" name="observaciones"></textarea><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <h2>Datos ingresados:</h2>
+    <table id="tablaDatos">
+        <tr>
+            <th>Número</th>
+            <th>Tipo</th>
+            <th>DNI</th>
+            <th>Apellido y Nombre</th>
+            <th>En Código</th>
+            <th>En Letras</th>
+            <th>Observaciones</th>
+        </tr>
+    </table>
+
+    <script>
+        const formulario = document.getElementById('miFormulario');
+        const tabla = document.getElementById('tablaDatos');
+
+        formulario.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const numero = formulario.numero.value;
+            const tipo = formulario.tipo.value;
+            const dni = formulario.dni.value;
+            const nombre = formulario.nombre.value;
+            const codigo = formulario.codigo.value;
+            const letras = formulario.letras.value;
+            const observaciones = formulario.observaciones.value;
+
+            const fila = tabla.insertRow();
+            const celdaNumero = fila.insertCell(0);
+            const celdaTipo = fila.insertCell(1);
+            const celdaDNI = fila.insertCell(2);
+            const celdaNombre = fila.insertCell(3);
+            const celdaCodigo = fila.insertCell(4);
+            const celdaLetras = fila.insertCell(5);
+            const celdaObservaciones = fila.insertCell(6);
+
+            celdaNumero.textContent = numero;
+            celdaTipo.textContent = tipo;
+            celdaDNI.textContent = dni;
+            celdaNombre.textContent = nombre;
+            celdaCodigo.textContent = codigo;
+            celdaLetras.textContent = letras;
+            celdaObservaciones.textContent = observaciones;
+
+            formulario.reset();
+        });
+    </script>
+</body>
+</html>

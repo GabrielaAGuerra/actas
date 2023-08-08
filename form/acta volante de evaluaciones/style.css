@@ -1,0 +1,136 @@
+
+ html{
+  width: 1500px;
+  height: 1000px;
+ }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+.tabla{
+  font-family: Arial, sans-serif;
+  text-align: center;
+  border: #bbb7b7;
+  margin-bottom: 15px;
+}
+  h1 {
+   
+    color: white;
+    text-align: right;
+    margin: 0;
+    direction: inherit;
+    width: 90%;
+  
+  }
+
+  img{
+    margin-left: 110px;
+  }
+  
+  .card{
+    background-color: none;
+    width: 1500px;
+    height: 240px;
+  }
+  .card-body{
+    height: 230px;
+  }
+.card-header{
+  width: 1500px;
+  height:215px;
+  padding: 10px;
+  text-align: center;
+    background-color: rgb(46, 46, 119) ;
+}
+.date {
+  float: right;
+  
+  font-size: 18px;
+}
+ 
+  .card2 .label{
+    
+    width: 175px;
+    height:70px;
+  float: right;
+  text-align: center;
+
+    
+  }
+  
+.logo_txt{
+  
+  text-align: center;
+
+}
+.logo{
+  float: left;
+   
+}
+
+
+div {
+  margin: .4em 0;
+}
+div label {
+  width: 44%;
+  float: left;
+}
+
+
+  table {
+    margin-top: 40px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+
+  th {
+    background-color: rgb(46, 46, 119);
+    color: white;
+  }
+
+  .nombre-alumno {
+    font-weight: bold;
+  }
+
+  button {
+    background-color:rgb(46, 46, 119);
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    border: none;
+    padding: 30px;
+    cursor: pointer;
+    margin: 35px;
+  }
+  #print-button{
+    margin-left: 135px;
+    border-radius: 5px;
+   object-position: center;
+  }
+  
+  @media print {
+    /* Establecer el botón de impresión como no visible al imprimir */
+    button#print-button {
+        display: none;
+    }
+    .input {
+      color: rgb(46, 46, 119);
+      outline: none; /* Elimina el marco de selección predeterminado */
+    }
+    
+    /* Estilo del select para eliminar el marco de selección */
+    .select {
+      outline: none; /* Elimina el marco de selección predeterminado */
+    }
+    
+    
+  }
