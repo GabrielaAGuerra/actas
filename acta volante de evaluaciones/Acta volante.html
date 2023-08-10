@@ -1,0 +1,289 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .card-formulario {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            width: 400px;
+        }
+        .tabla-pequena th, .tabla-pequena td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+     
+  </style>
+    <title>Acta volante de evaluaciones</title>
+  </head>
+  
+<body>
+
+  <header>
+    <div class="card text-center">
+      <div class="card-header">
+        <main>
+          <a href="" id="logo-container" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img id="logo" src="img/logo2.png" alt="ISFT" title="isft185" width="145" height="210">
+            <span class="fs-4 logo_txt">
+              <h1 style="color: white; margin-left: auto;  margin: 50px;">Acta volante de Evaluaciones</h1>
+            </span>
+          </a>
+  
+  
+        </main>
+      </div>
+  </div></header>
+  
+  
+  <div class="container-sm">
+    <div class="date">
+      Fecha
+  
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> <label for="fecha"> </label>
+          <input type="date" id="fecha" name="fecha" required=""><br><br>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-body">
+  
+      <div class="col-md">
+        <div class="form-floating2">
+  
+          <label for="floatingInputGrid">Asignatura:</label>
+          <input type="email" class="form-control" id="floatingInputGrid">
+        </div>
+      </div>
+  
+  
+      <div class="row g-2">
+        <div class="col-md">
+          <div class="form-floating">
+            <select class="form-select" id="floatingSelectGrid">
+              <option selected="">Carrera</option>
+              <option value="1">Comunicaciòn Multimedial</option>
+              <option value="2">Mecatronica</option>
+              <option value="3">Mecanica Automotriz</option>
+              <option value="4">Gestion de energia renovables</option>
+              <!-- Agrega más opciones según las carreras disponibles -->
+  
+            </select>
+          </div>
+  
+          <div class="row g-2">
+            <div class="col-md">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid">
+                  <option selected="">Año</option>
+                  <option value="1">Primero</option>
+                  <option value="2">Segundo</option>
+                  <option value="3">Tercero</option>
+                </select>
+                <label for="floatingSelectGrid"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="card-formulario text-center">
+    <div id="espacioFormulario">&nbsp;</div>
+    <form id="miFormulario">
+        <label for="numero">Número:</label>
+        <input type="number" id="numero" name="numero" required=""><br>
+
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo" required="">
+            <option value="DNI">DNI</option>
+            <option value="Pasaporte">Pasaporte</option>
+            <option value="Carnet">Carnet</option>
+        </select><br>
+
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required="">
+        <br>
+
+        <label for="nombre">Apellido y Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required="">
+        <br>
+
+        <label for="codigo">En Código:</label>
+        <input type="text" id="codigo" name="codigo" required="">
+        <br>
+
+        <label for="letras">En Letras:</label>
+        <input type="text" id="letras" name="letras" required="">
+        <br>
+        <br>
+
+        <label for="observaciones">Observaciones:</label>
+        <textarea id="observaciones" name="observaciones"></textarea><br>
+
+        <button type="button" onclick="agregarDato()">Enviar</button>
+    </form>
+  </div>
+  <br><br><br>
+      
+      <table id="tablaDatos">
+        <tbody><tr>
+          <th>Número</th>
+          <th>Tipo</th>
+          <th>DNI</th>
+          <th>Apellido y Nombre</th>
+          <th>En Código</th>
+          <th>En Letras</th>
+          <th>Observaciones</th>
+
+        </tr>
+      </tbody></table>
+  
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+
+     <table class="tabla-pequena">
+        <tr>
+            <th>Total de Alumnos:</th>
+            <th> <span id="totalDatos">0</span></th>
+        </tr>
+        <tr>
+            <td>Aprobados</td>
+            <td><span id="aprobados">0</span></td>
+        </tr>
+        <tr>
+            <td>Aplazados:</td>
+            <td><span id="aplazados">0</span></td>
+        </tr>
+        <tr>
+            <td>Ausentes:</td>
+            <td> <input type="number" id="numero" name="numero" required=""><br></td>
+        </tr>
+
+    </table>
+
+ 
+  <script>
+    // Obtener el elemento de input de fecha
+    const inputFecha = document.getElementById("fecha");
+
+    // Obtener la fecha actual en formato ISO (AAAA-MM-DD) y establecerla como valor predeterminado
+    const fechaActual = new Date().toISOString().split("T")[0];
+    inputFecha.value = fechaActual;
+  </script>
+<br>
+<br>
+<div class="card-footer text-body-secondary" style="margin: 25px; width:1000px; height:150px;">
+  <div class="row sm-2">
+    <div class="col-md">
+      <div class="form-floating">
+        <input type="" class="form-control " id="floatingInputGrid" placeholder="Default input" value="">
+        <label for="floatingInputGrid">PRESIDENTE:</label>
+
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input type="firma" class="form-control " id="floatingInputGrid" placeholder="Default input" value="">
+        <label for="floatingInputGrid">Vocal:</label>
+      </div>
+
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input type="firma" class="form-control " id="floatingInputGrid" placeholder="Default input" value="">
+        <label for="floatingInputGrid">Caseros:</label>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<br>
+<br>
+<div class="d-grid gap-2" style=" margin: 20px; width:1000px; height:80px;">
+      
+      <button id="print-button" onclick="window.print()">Imprimir Acta</button>
+    </div>
+    <br>
+    <br>
+    <br>
+
+   
+
+    
+    <script>
+        let numero = 1;
+        let aprobados = 0;
+        let aplazados = 0;
+    
+        function agregarDato() {
+          const formulario = document.getElementById("miFormulario");
+          const tabla = document.getElementById("tablaDatos");
+          const totalSpan = document.getElementById("totalDatos");
+          const aprobadosSpan = document.getElementById("aprobados");
+          const aplazadosSpan = document.getElementById("aplazados");
+    
+          const tipo = formulario.tipo.value;
+          const dni = formulario.dni.value;
+          const nombre = formulario.nombre.value;
+          const codigo = formulario.codigo.value;
+          const letras = formulario.letras.value;
+          /*const observaciones = formulario.observaciones.value;        <td>${observaciones}</td>*/
+    
+          let codigoEval = parseInt(codigo);
+          let observaciones = "";
+          
+          if (!isNaN(codigoEval)) {
+            if (codigoEval >= 1 && codigoEval <= 6) {
+              observaciones = "Aplazado";
+              aplazados++;
+            } else if (codigoEval >= 7 && codigoEval <= 10) {
+              observaciones = "Aprobado";
+              aprobados++;
+            } else {
+              observaciones = "Fuera de rango";
+            }
+          } else {
+            observaciones = "No válido";
+          }
+    
+          const fila = tabla.insertRow();
+          fila.innerHTML = `
+            <td>${numero}</td>
+            <td>${tipo}</td>
+            <td>${dni}</td>
+            <td>${nombre}</td>
+            <td>${codigo}</td>
+            <td>${letras}</td>
+           
+            <td>${observaciones}</td>
+          `;
+    
+          numero++;
+          totalSpan.textContent = parseInt(totalSpan.textContent) + 1;
+    
+          aprobadosSpan.textContent = aprobados;
+          aplazadosSpan.textContent = aplazados;
+    
+          formulario.reset();
+        }
+      </script>
+
+
+</body></html>
